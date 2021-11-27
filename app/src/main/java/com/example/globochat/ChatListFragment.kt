@@ -1,10 +1,9 @@
-package com.sriyank.globochat
+package com.example.globochat
 
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
-import com.example.globochat.R
 
 
 class ChatListFragment : Fragment() {
