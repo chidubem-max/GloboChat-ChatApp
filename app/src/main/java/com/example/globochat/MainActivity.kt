@@ -2,11 +2,13 @@ package com.example.globochat
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.preference.PreferenceManager
 import com.example.globochat.R
 
 
@@ -28,6 +30,11 @@ class MainActivity : AppCompatActivity() {
 
        // Link ActionBar with NavController
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+
+        val autoReplyTime = sharedPreferences.getString("key_auto_reply_time", "")
+        Log.i("MainActivity","Auto Reply Time: $autoReplyTime")
     }
 
     override fun onSupportNavigateUp(): Boolean {
