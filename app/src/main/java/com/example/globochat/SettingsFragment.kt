@@ -9,10 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment
-import androidx.preference.EditTextPreference
-import androidx.preference.Preference
-import androidx.preference.PreferenceFragmentCompat
-import androidx.preference.PreferenceManager
+import androidx.preference.*
 
 
 class SettingsFragment : PreferenceFragmentCompat() {
@@ -54,8 +51,14 @@ class SettingsFragment : PreferenceFragmentCompat() {
             } else {
                 true     // true: accept the new value.
             }
+        }
 
-
+        val notificationPref = findPreference<SwitchPreferenceCompat>("key_new_msg_notif")
+        notificationPref?.summaryProvider = Preference.SummaryProvider<SwitchPreferenceCompat> {switchPref ->
+            if (switchPref?.isChecked!!)
+                "Status: ON"
+            else
+                "Status: OFF"
         }
     }
 }
