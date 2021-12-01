@@ -14,6 +14,15 @@
             app:iconSpaceReserved="false"
             app:useSimpleSummaryProvider="true" />
 
+        <SeekBarPreference
+            android:title="Volume"
+            app:iconSpaceReserved="false"
+            android:defaultValue="30"
+            app:min="10"
+            android:max="100"
+            />
+
+
         <SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="@string/key_auto_reply"

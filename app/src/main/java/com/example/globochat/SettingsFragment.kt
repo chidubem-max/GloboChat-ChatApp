@@ -17,6 +17,9 @@ class SettingsFragment : PreferenceFragmentCompat() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.settings, rootKey)
 
+        val dataStore = DataStore()
+     //    preferenceManager.preferenceDataStore = dataStore
+
         val accSettingsPref = findPreference<Preference>(getString(R.string.key_account_settings))
 
 
@@ -59,6 +62,30 @@ class SettingsFragment : PreferenceFragmentCompat() {
                 "Status: ON"
             else
                 "Status: OFF"
+        }
+        notificationPref?.preferenceDataStore = dataStore
+
+        val isNotifEnabled = dataStore.getBoolean("key_new_msg_motif",false)
+
+    }
+    class DataStore: PreferenceDataStore() {
+
+        override fun getBoolean(key: String?, defValue: Boolean): Boolean {
+
+            if(key == "key_new_msg_notif") {
+
+                Log.i("DataStore", "getBoolean executed for$key")
+            }
+
+            return defValue
+        }
+
+        override fun putBoolean(key: String?, value: Boolean) {
+               if(key == "key_new_msg_notif") {
+
+                   Log.i("DataStore", "putBoolean executed for$key with new value: $value")
+               }
+
         }
     }
 }
